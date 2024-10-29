@@ -164,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Main search function to handle both dictionary lookup and translation
     function search(word) {
         fetchApi(word);
-        fetchTranslation(word);  // Fetch the translation of the word
         searchInput.value = word;
         saveSearchHistory(word); // Save to history
     }

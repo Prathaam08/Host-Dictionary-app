@@ -1,0 +1,327 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+.nav-bar {
+    background: linear-gradient(to right, #1c38c6, #af1635);
+    padding: 25px;
+    background-color: #7787d5;
+    /* margin: 10px 0px; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    display: flex;
+    /* justify-content: flex-end; */
+    z-index: 2;
+}
+
+.nav-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-bar li {
+    position: relative;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Underline Animation */
+.nav-bar a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-bar a:hover {
+    color: #fc5c7d;
+    /* Change text color on hover */
+    transform: translateY(-2px);
+    /* Slightly lift the link */
+}
+
+.nav-bar a:hover::after {
+    width: 100%;
+    /* Expand the underline on hover */
+    left: 0;
+    /* Align the underline with the link */
+}
+
+
+.logo {
+    height: 420px;
+    width: 540px;
+}
+
+h1 {
+    margin: -62px 5px;
+    background-image: linear-gradient(-225deg,
+            #231557 0%,
+            #44107a 29%,
+            #ff1361 67%,
+            #fff800 100%);
+    background-size: 200% auto;
+    color: #fff;
+    /* text-fill-color: transparent; */
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    /* display: inline-block; */
+    font-size: 30px;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+
+
+/* Animated Background with Floating Words */
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(to right, #6a82fb, #fc5c7d);
+    overflow: hidden;
+}
+
+.word {
+    position: absolute;
+    font-size: 2rem;
+    color: white;
+    opacity: 0.85;
+    animation: float 10s infinite;
+}
+
+/* Vertical Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 0.15;
+    }
+
+    50% {
+        transform: translateY(-50px);
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 0.15;
+    }
+}
+
+/* Horizontal Drift for Dynamic Effect */
+@keyframes drift {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(30px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.word:nth-child(1) {
+    top: 10%;
+    left: 1%;
+}
+
+.word:nth-child(2) {
+    top: 5%;
+    left: 50%;
+}
+
+.word:nth-child(3) {
+    top: 40%;
+    right: 10%;
+}
+
+.word:nth-child(4) {
+    top: 70%;
+    left: 70%;
+}
+
+.word:nth-child(5) {
+    top: 80%;
+    left: 5%;
+}
+
+.word:nth-child(6) {
+    top: 90%;
+    left: 20%;
+}
+
+.word:nth-child(7) {
+    top: 90%;
+    right: 10%;
+}
+
+.word:nth-child(8) {
+    top: 20%;
+    left: 40%;
+}
+
+.word:nth-child(9) {
+    top: 60%;
+    left: 10%;
+}
+
+.word:nth-child(10) {
+    top: 30%;
+    left: 5%;
+}
+
+.word:nth-child(11) {
+    top: 20%;
+    right: 5%;
+}
+
+.word:nth-child(12) {
+    top: 50%;
+    left: 20%;
+}
+
+.word:nth-child(13) {
+    top: 25%;
+    right: 25%;
+}
+
+.word:nth-child(14) {
+    top: 55%;
+    right: 25%;
+}
+.word:nth-child(15) {
+    top: 95%;
+    right:40%;
+}
+.word:nth-child(16) {
+    top: 60%;
+    right: 5%;
+}
+.word:nth-child(17) {
+    top: 35%;
+    left: 25%;
+}
+
+
+
+
+/* Form Containers */
+.main-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 350px;
+    text-align: center;
+    position: relative;
+    margin-top: 80px;
+}
+
+.form-container {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: scale(0.9);
+}
+
+.form-container p {
+    padding: 8px 0px;
+}
+
+.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Input Fields */
+.input-box {
+    margin: 23px 0px;
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.input-box label {
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    transition: 0.3s;
+    color: #888;
+    /* Light color for label */
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -20px;
+    left: 0;
+    color: #6a82fb;
+    font-size: 0.8rem;
+    /* Slightly smaller font size when active */
+}
+
+/* Buttons */
+.btn {
+    margin: 0px 20px;
+    background-color: #6a82fb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+    /* Increased font size for better readability */
+}
+
+.btn:hover {
+    background-color: #fc5c7d;
+}
+
+/* Hidden Section Transitions */
+.hidden-section {
+    display: none;
+}

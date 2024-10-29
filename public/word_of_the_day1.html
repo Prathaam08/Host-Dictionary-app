@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Word of the Day</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 105vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #e0f7fa, #b2ebf2, #80deea);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+/* Navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  padding: 10px;
+  z-index: 1000; /* Ensure it stays on top */
+  transition: background-color 0.3s ease;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background on hover */
+}
+
+/* Navbar title styling */
+.navbar h3 {
+  color: white;
+  margin: 0;
+}
+
+
+.navbar p{
+            color: white;
+    font-size: 14px;
+    margin: 2px 6px;
+        }
+
+/* Nav bar link list */
+.nav-bar {
+  padding: 16px 200px;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  display: flex;
+  z-index: 2;
+}
+
+.nav-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-bar li {
+  position: relative;
+}
+
+/* Nav bar links */
+.nav-bar a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 48px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-bar a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-bar a:hover {
+  color: #fc5c7d;
+  transform: translateY(-2px);
+}
+
+.nav-bar a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.username {
+  color: white;
+  margin-right: -10px;
+  font-size: 21px;
+}
+
+.logout-button {
+  margin: 8px 26px;
+  padding: 8px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+        .word-of-the-day {
+            color: black;
+            background-color: #b1e5ff;
+            border-radius: 10px;
+            padding: 20px; /* Increased padding for better spacing */
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+            width: 80%; /* Set a width for better readability */
+            max-width: 600px; /* Max width to prevent it from getting too large */
+        }
+
+        h2 {
+            text-align: center; /* Center only the heading */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                visibility: hidden;
+            }
+            to {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        #backButton1 {
+            margin: 20px; /* Adjusted margins for spacing */
+            padding: 10px 15px; /* Adjusted padding */
+            border-radius: 7px;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            transition: transform 0.2s; /* Smooth transition for scaling */
+        }
+
+        #backButton1:hover {
+            box-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 5px rgba(56, 139, 222, 0.6);
+            transform: scale(1.05);
+            color: #41ade3;
+        }
+
+        .translation {
+            padding-left: 10px;
+            border-radius: 4px 0 0 4px;
+            border-left: 3px solid #4D59FB;
+        }
+
+        /* Animation for floating letters */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .letter {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ba7e4;
+            bottom: 0; /* Start from the bottom */
+            animation: float 10s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        .letter:nth-child(odd) {
+            animation-duration: 8s;
+        }
+
+        .letter:nth-child(even) {
+            animation-duration: 12s;
+        }
+
+        /* Responsive floating letters */
+        @media (max-width: 768px) {
+            .letter {
+                font-size: 1.5rem;
+            }
+        }
+
+        #backButton1 {
+            z-index: 2;
+        }
+
+           /* Modal styles */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      z-index: 1001;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 20%;
+      /* Could be more or less, depending on screen size */
+      max-width: 400px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-content p {
+      margin: 9px 34px;
+
+    }
+
+    .logoutbutton {
+      margin: 9px 45px;
+      padding: 8px 15px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-left">
+          <h3>WORDVOYAGE</h3>
+          <p>English To Marathi</p>
+        </div>
+        <div class="nav-bar">
+          <ul>
+              <li><a href="about.html" id="aboutBtn">About us</a></li>
+              <li><a href="service.html" id="serviceBtn">Services</a></li>
+              <li><a href="contact.html" id="contactBtn">Contact Us</a></li>
+     
+          </ul>
+         </div>
+        <div class="navbar-right">
+          <span id="username" class="username">Welcome, User</span>
+          <button id="logoutButton" class="logout-button" onclick="logout()">Logout</button>
+        </div>
+      </nav>
+
+
+
+    <div class="word-of-the-day">
+        <h2>Word of the Day</h2>
+        <div class="word">
+            <p id="word-of-the-day-word"></p>
+            <span id="word-of-the-day-phonetics"></span>
+        </div>
+        <div class="meaning">
+            <h3>Meaning</h3>
+            <span id="word-of-the-day-definition"></span>
+        </div>
+        <div class="example">
+            <h3>Example</h3>
+            <span id="word-of-the-day-example"></span>
+        </div>
+        <div class="translation">
+            <h3>Translation</h3>
+            <span id="word-of-the-day-translation"></span>
+        </div>
+    </div>
+
+    <button id="backButton1">Back to Dictionary</button>
+
+      <!-- Modal Structure -->
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+
+      <p>Are you sure you want to logout?</p>
+      <button id="confirmLogoutButton" class="logoutbutton">Yes</button>
+      <button id="cancelLogoutButton" class="logoutbutton">No</button>
+    </div>
+  </div>
+    <script src="word_of_the_day1.js"></script>
+
+
+    <script>
+      // Function to handle logout
+      function logout() {
+        fetch('/logout', {
+          method: 'POST',
+          credentials: 'same-origin'
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = '/index.html'; // Redirect to login page after logout
+          } else {
+            alert('Logout failed');
+          }
+        })
+        .catch(error => console.error('Logout error:', error));
+      }
+  
+      // Fetch the logged-in user's name (add this to the bottom of your existing script)
+      window.onload = function() {
+        fetch('/getUser', { credentials: 'same-origin' })
+          .then(response => response.json())
+          .then(data => {
+            if (data.username) {
+              document.getElementById('username').textContent = `Welcome, ${data.username}`;
+            }
+          })
+          .catch(error => console.error('Error fetching username:', error));
+      };
+
+      // Show the logout modal
+    const logoutButton = document.getElementById('logoutButton');
+    const logoutModal = document.getElementById('logoutModal');
+    const confirmLogoutButton = document.getElementById('confirmLogoutButton');
+    const cancelLogoutButton = document.getElementById('cancelLogoutButton');
+    const closeModal = document.querySelector('.close');
+
+    logoutButton.onclick = function () {
+      logoutModal.style.display = 'block'; // Show the modal
+    };
+
+    // Handle logout confirmation
+    confirmLogoutButton.onclick = function () {
+      logout();
+      logoutModal.style.display = 'none'; // Hide the modal after logout
+    };
+
+    // Handle cancel logout
+    cancelLogoutButton.onclick = function () {
+      logoutModal.style.display = 'none'; // Hide the modal
+    };
+
+    // Close modal on clicking 'x'
+    closeModal.onclick = function () {
+      logoutModal.style.display = 'none';
+    };
+
+    // Close modal if clicked outside of modal content
+    window.onclick = function (event) {
+      if (event.target == logoutModal) {
+        logoutModal.style.display = 'none';
+      }
+    };
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</body>
+
+
+</html>

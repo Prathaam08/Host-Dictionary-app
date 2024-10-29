@@ -1,0 +1,563 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.google_element{
+  background-color: red;
+}
+
+body{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #4D59FB;
+  background-image:url('/images/img5.png');
+  background-size: 100%;
+
+}
+
+::selection{
+  color: #fff;
+  background: #4D59FB;
+}
+
+
+/* Sidebar styles */
+.sidebar {
+  position: fixed; /* Fixed position on the left side */
+  top: 100px; /* Adjust as needed */
+  left: -17px; /* Adjust as needed */
+  background-color: rgba(255, 255, 255, 0.3); /* Transparent background */
+  padding: 15px; /* Add padding */
+  border-radius: 25px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for better visibility */
+  height: 100%;
+  margin: -23px 0px;
+
+}
+
+.sidebar button {
+  display: block; /* Make buttons stack vertically */
+  width: 100%; /* Full width for buttons */
+  margin-bottom: 10px; /* Space between buttons */
+}
+
+
+
+/* General button styling */
+button, .search input {
+  background-color: transparent; /* Make background transparent */
+  border: 2px solid #fff; /* Optional: Add a white border */
+  padding: 10px 20px; /* Adjust padding for size */
+  border-radius: 5px;
+  box-shadow: none; /* Remove shadow for transparent background */
+  color: black; /* Set text color to white */
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Optional: Add a hover effect */
+  transform: scale(1.05);
+}
+
+/* Specific button sizes */
+#viewHistoryButton,
+#wordOfTheDayButton,
+#viewFavoritesButton {
+  width: 200px; /* Set fixed width */
+  margin: 10px auto; /* Center the buttons */
+}
+
+
+
+
+/* Navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  padding: 10px;
+  z-index: 1000; /* Ensure it stays on top */
+  transition: background-color 0.3s ease;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background on hover */
+}
+
+/* Navbar title styling */
+.navbar h3 {
+  color: white;
+  margin: 0;
+}
+
+/* Nav bar link list */
+.nav-bar {
+  padding: 16px 200px;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  display: flex;
+  z-index: 2;
+}
+
+.nav-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-bar li {
+  position: relative;
+}
+
+/* Nav bar links */
+.nav-bar a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 48px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-bar a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-bar a:hover {
+  color: #fc5c7d;
+  transform: translateY(-2px);
+}
+
+.nav-bar a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.username {
+  color: white;
+  margin-right: 20px;
+  font-size: 21px;
+}
+
+.logout-button {
+  padding: 8px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
+.wrapper{
+  width: 420px;
+  border-radius: 7px;
+  background: #fff;
+  padding: 25px 28px 45px;
+  box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  /* text-fill-color: transparent; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 30px;
+      margin: 0px 66px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
+.wrapper .search{
+  position: relative;
+  margin: 35px 0 18px;
+}
+.search input{
+  height: 53px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 0 42px;
+  border: 1px solid #999;
+}
+.search input:focus{
+  padding: 0 41px;
+  border: 2px solid #4D59FB;
+}
+.search input::placeholder{
+  color: grey;
+}
+.search :where(i, span){
+  position: absolute;
+  top: 50%;
+  color: #999;
+  transform: translateY(-50%);
+}
+.search i{
+  left: 18px;
+  pointer-events: none;
+  font-size: 16px;
+}
+.search input:focus ~ i{
+  color: #4D59FB;
+}
+.search span{
+  right: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+}
+.search input:valid ~ span{
+  display: block;
+}
+.wrapper .info-text{
+  font-size: 13px;
+  color: #9A9A9A;
+  margin: -3px 0 -10px;
+}
+.wrapper.active .info-text{
+  display: none;
+}
+.info-text span{
+  font-weight: 500;
+}
+.wrapper ul{
+  height: 0;
+  opacity: 0;
+  padding-right: 1px;
+  overflow-y: hidden;
+  transition: all 0.2s ease;
+}
+.wrapper.active ul{
+  opacity: 1;
+  height: 303px;
+}
+.wrapper ul li{
+  display: flex;
+  list-style: none;
+  margin-bottom: 14px;
+  align-items: center;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #D9D9D9;
+  justify-content: space-between;
+}
+ul li:last-child{
+  margin-bottom: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+ul .word p{
+  font-size: 22px;
+  font-weight: 500;
+}
+ul .word span{
+  font-size: 12px;
+  color: #989898;
+}
+ul .word i{
+  color: #999;
+  font-size: 15px;
+  cursor: pointer;
+}
+ul .content{
+  max-height: 215px;
+  overflow-y: auto;
+  padding: 35px 0px;
+}
+ul .content::-webkit-scrollbar{
+  width: 0px;
+}
+.content li .details{
+  padding-left: 10px;
+  border-radius: 4px 0 0 4px;
+  border-left: 3px solid #4D59FB;
+}
+.content li p{
+  font-size: 17px;
+  font-weight: 500;
+}
+.content li span{
+  font-size: 15px;
+  color: #7E7E7E;
+}
+.content .synonyms .list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.content .synonyms span{
+  cursor: pointer;
+  margin-right: 5px;
+  text-decoration: underline;
+}
+
+.translation{
+  padding-left: 10px;
+  border-radius: 4px 0 0 4px;
+  border-left: 3px solid #4D59FB;
+}
+
+.translation span{
+  font-size: 17px;
+}
+
+
+
+ 
+#wordOfTheDayButton{
+  margin: 63px 50px;
+  padding: 10px 20px;
+  border-radius: 7px;
+  background-color: black;
+  color: white;
+}
+
+#wordOfTheDayButton:hover{
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 5px rgba(56, 139, 222, 0.6);
+    transform: scale(1.05);
+    color: #41ade3;
+}
+
+
+
+.search-history{
+  background-color: #b1e5ff;
+margin: 34px 73px;
+padding: 23px;
+    border-radius: 12px;
+}
+
+.search-history ul{
+  margin: 14px 45px;
+  cursor: pointer;
+  
+}
+
+.search-history h3{
+
+  margin: -9px 0px;
+}
+
+
+
+
+
+
+
+
+
+/* Styling for buttons and text to pop against the background */
+button, .search input {
+  background-color: #fff;
+  border: none;
+  padding: 10px 65px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+button:hover, .search input:focus {
+  transform: scale(1.05);
+}
+
+#backToOptionPageButton {
+  
+  margin: 20px -100px;
+  position: fixed; 
+  bottom: 20px; 
+  left: 50%;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#backToOptionPageButton:hover {
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 5px rgba(56, 139, 222, 0.6);
+  transform: scale(1.05);
+  color: #41ade3;
+}
+
+
+#viewHistoryButton{
+  bottom: 20px; 
+  left: 50%;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 63px 50px;
+}
+
+#viewHistoryButton:hover{
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 5px rgba(56, 139, 222, 0.6);
+  transform: scale(1.05);
+  color: #41ade3;
+}
+
+#viewFavoritesButton{
+  /* position: fixed;    */
+  bottom: 20px; 
+  left: 50%;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 63px 50px;
+}
+
+#viewFavoritesButton:hover{
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 5px rgba(56, 139, 222, 0.6);
+  transform: scale(1.05);
+  color: #41ade3;
+}
+
+#favoriteButton{
+  bottom: 20px; 
+  left: 50%;
+  background-color: black;
+  color: white;
+  padding: 9px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 0px 105px;
+}
+
+#favoriteButton:hover{
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 5px rgba(56, 139, 222, 0.6);
+  transform: scale(1.05);
+  color: #41ade3;
+}
+
+
+#en-to-mr{
+  bottom: 20px; 
+  left: 50%;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 63px 50px;
+  width: 202px;
+}
+
+
+#en-to-mr:hover{
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 5px rgba(56, 139, 222, 0.6);
+  transform: scale(1.05);
+  color: #41ade3;
+}
+
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s; /* Fade-in animation */
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%); /* Gradient background */
+  padding: 20px;
+  border-radius: 12px; /* Rounded corners */
+  text-align: center;
+  width: 320px; /* Slightly wider */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Shadow effect */
+  transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+.modal-content p {
+  margin-bottom: 15px;
+  font-size: 1.1em; /* Slightly larger text */
+  color: #333; /* Darker text color */
+}
+
+.modal-content button {
+  margin: 5px;
+  padding: 10px 20px; /* Larger button */
+  cursor: pointer;
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded button corners */
+  background-color: #4D59FB; /* Primary button color */
+  color: #fff; /* White text color */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
+}
+
+/* Button hover effect */
+.modal-content button:hover {
+  background-color: #3c47f9; /* Darker shade on hover */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Animation for modal fade in */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}

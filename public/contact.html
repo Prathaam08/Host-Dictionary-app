@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+#contact h3{
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    margin: 9px 0px;
+}
+section {
+    width: 600px;   
+    max-width: 100%;
+    margin: 20px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: sectionFadeIn 1s ease-in-out forwards;
+}
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Team member card */
+.team-member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInCard 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInCard {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.team-member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.team-member h4 {
+    margin-bottom: 10px;
+    color: #6a82fb;
+}
+
+.team-member p {
+    margin-bottom: 5px;
+}
+
+/* Icon styling */
+.contact-links a {
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.contact-links a i.fab.fa-instagram {
+    color: #E4405F; /* Instagram's official brand color */
+}
+
+.contact-links a i.fab.fa-facebook {
+    color: #1877F2; /* Facebook's official brand color */
+}
+
+/* Hover effect on icons */
+.contact-links a:hover {
+    transform: translateY(-5px);
+}
+
+.contact-links a:hover i.fab.fa-instagram {
+    animation: bounceInsta 0.5s;
+}
+
+@keyframes bounceInsta {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.contact-links a:hover i.fab.fa-facebook {
+    animation: bounceFb 0.5s;
+}
+
+@keyframes bounceFb {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <section id="contact">
+        <h3>Contact Our Team</h3>
+
+        <!-- Team Member 1 (Pratham More) -->
+        <div class="team-member">
+            <img src="/images/pratham.jpeg" alt="Pratham More ">
+            <div>
+                <h4>Pratham More</h4>
+                <p>Email: <a href="mailto:pratham@acpce.ac.in">pratham@acpce.ac.in</a></p>
+                <div class="contact-links">
+                    <a href="https://www.instagram.com/i.prathaam/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 2 (Shravani Mankar) -->
+        <div class="team-member">
+            <img src="images/shravani.jpeg" alt="Shravani Mankar">
+            <div>
+                <h4>Shravani Mankar</h4>
+                <p>Email: <a href="mailto:shravanimankar@acpce.ac.in">shravanimankar@acpce.ac.in</a></p>
+                <div class="contact-links">
+                    <a href="https://www.instagram.com/unknownig_1/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/member2" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 3 (Nehal Kamble) -->
+        <div class="team-member">
+            <img src="/images/nehal.jpeg" alt="Nehal Kamble">
+            <div>
+                <h4>Nehal Kamble</h4>
+                <p>Email: <a href="mailto:nehal@acpce.ac.in">nehal@acpce.ac.in</a></p>
+                <div class="contact-links">
+                    <a href="https://www.instagram.com/neh.al416/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/member3" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 4 (Sahil Katke) -->
+        <div class="team-member">
+            <img src="/images/sahil.jpeg" alt="Sahil Katke ">
+            <div>
+                <h4>Sahil Katke</h4>
+                <p>Email: <a href="mailto:sahil@acpce.ac.in">sahil@acpce.ac.in</a></p>
+                <div class="contact-links">
+                    <a href="https://www.instagram.com/sahillll.40/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/member4" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

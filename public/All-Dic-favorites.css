@@ -1,0 +1,302 @@
+/* Page Background and Basic Styling */
+body {
+    height: 105vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #e0f7fa, #b2ebf2, #80deea);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+/* Navbar styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    padding: 10px;
+    z-index: 1000; /* Ensure it stays on top */
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar {
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background on hover */
+  }
+  
+  /* Navbar title styling */
+  .navbar h3 {
+    color: white;
+    margin: 0;
+  }
+
+  .navbar p{
+    color: white;
+font-size: 14px;
+margin: 2px 6px;
+}
+  /* Nav bar link list */
+  .nav-bar {
+    padding: 16px 200px;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    display: flex;
+    z-index: 2;
+  }
+  
+  .nav-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .nav-bar li {
+    position: relative;
+  }
+  
+  /* Nav bar links */
+  .nav-bar a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 48px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .nav-bar a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .nav-bar a:hover {
+    color: #fc5c7d;
+    transform: translateY(-2px);
+  }
+  
+  .nav-bar a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  .username {
+    color: white;
+    margin-right: -12px;
+    font-size: 21px;
+  }
+  
+  .logout-button {
+    padding: 8px 34px;
+    margin: 8px 26px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #d32f2f;
+  }
+
+
+/* Header Styling */
+.header h1 {
+    text-transform: uppercase;
+    background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 30px;
+    margin: 135px 560px;
+    position: relative; /* Ensure stacking context */
+    z-index: 1; /* Higher z-index to appear above letters */
+}
+
+/* Text animation */
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* List and Button Styling */
+ul {
+    margin: -69px 0px;
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    position: relative; /* Ensure stacking context */
+    z-index: 1; /* Higher z-index to appear above letters */
+}
+
+.header li {
+    font-size: 1.5rem;
+    margin: -18px 5px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(230, 230, 230, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: scale(1.1);
+}
+
+button {
+    font-size: 1rem;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Back Button Styling */
+#backButton {
+    display: block;
+    margin: 265px auto;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    position: relative; /* Ensure stacking context */
+    z-index: 2; /* Keep this element on top of the letters */
+}
+
+#backButton:hover {
+    box-shadow: 0 0 5px rgba(0, 180, 224, 0.8), 0 0 5px rgba(30, 12, 233, 0.6);
+    transform: scale(1.05);
+    color: #41ade3;
+}
+
+/* Floating Letters Animation */
+.letter {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4ba7e4;
+    bottom: 0; /* Start from the bottom */
+    animation: float 10s infinite ease-in-out;
+    opacity: 0;
+    z-index: 0; /* Keep this behind other content */
+}
+
+.letter:nth-child(odd) {
+    animation-duration: 8s;
+}
+
+.letter:nth-child(even) {
+    animation-duration: 12s;
+}
+
+/* Floating Animation Keyframes */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Letter Size */
+@media (max-width: 768px) {
+    .letter {
+        font-size: 1.5rem;
+    }
+}
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for better contrast */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease; /* Fade-in animation */
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #ffffff, #f0f0f0); /* Gradient background */
+  padding: 30px; /* Increased padding for more space */
+  border-radius: 12px; /* More rounded corners */
+  text-align: center;
+  width: 350px; /* Wider modal */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+.modal-content p {
+  margin-bottom: 20px; /* Increased margin for spacing */
+  font-size: 1.1em; /* Slightly larger text */
+  color: #333; /* Darker text for better readability */
+}
+
+.modal-content button {
+  margin: 5px;
+  padding: 10px 20px; /* Larger button */
+  cursor: pointer;
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded button corners */
+  background-color: #4D59FB; /* Primary button color */
+  color: #fff; /* White text */
+  font-weight: bold; /* Bold text for emphasis */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Button hover effect */
+.modal-content button:hover {
+  background-color: #3c47f9; /* Darker shade on hover */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Animation for modal fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start invisible */
+  }
+  to {
+    opacity: 1; /* Fade to visible */
+  }
+}

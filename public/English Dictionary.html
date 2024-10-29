@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>English Dictionary</title>
+  <link rel="stylesheet" href="English Dictionary.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+
+
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <h3>WORDVOYAGE</h3>
+    </div>
+    <div class="nav-bar">
+      <ul>
+          <li><a href="about.html" id="aboutBtn">About us</a></li>
+          <li><a href="service.html" id="serviceBtn">Services</a></li>
+          <li><a href="contact.html" id="contactBtn">Contact Us</a></li>
+ 
+      </ul>
+     </div>
+    <div class="navbar-right">
+      <span id="username" class="username">Welcome, User</span>
+      <button id="logoutButton" class="logout-button" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+
+
+
+    <!-- Sidebar for buttons -->
+    <div class="sidebar">
+      <button id="viewHistoryButton">View Search History</button>
+      <button id="wordOfTheDayButton">Show Word of the Day</button>
+      <button id="viewFavoritesButton">View Favorite Words</button>
+      <button id="en-to-mr" class="entomr" onclick="window.location.href='All-language.html'">English to Marathi Dictionary</button>
+    
+    </div>
+
+  <div class="wrapper">
+  
+
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3 class="animate-charcter"> WORDVOYAGE</h3>
+
+
+      </div>
+    </div>
+
+    <div class="search">
+      <input type="text" placeholder="Search a word" required spellcheck="false">
+      <i class="fas fa-search"></i>
+      <span class="material-icons" id="closeIcon" style="cursor: pointer;">close</span>
+
+    </div>
+    <p class="info-text">Type any existing word and press enter to get meaning, example.</p>
+    <ul>
+      <li class="word">
+        <div class="details">
+          <p>__</p>
+          <span>___</span>
+        </div>
+        <i class="fas fa-volume-up"></i>
+      </li>
+      <div class="content">
+        <li class="meaning">
+          <div class="details">
+            <p>Meaning</p>
+            <span>___</span>
+          </div>
+        </li>
+        <li class="example">
+          <div class="details">
+            <p>Example</p>
+            <span>___</span>
+          </div>
+        </li>
+        <li class="synonyms">
+          <div class="details">
+            <p>Synonyms</p>
+            <div class="list"></div>
+          </div>
+        </li>
+
+        <!-- Add this inside your existing HTML for the word details -->
+        <div class="favorite-section">
+          <button id="favoriteButton" class="favorite-button">Add to Favorites</button>
+        </div>
+        
+      </div>
+    </ul>
+  </div>
+
+ 
+
+
+<script>
+  document.getElementById('viewHistoryButton').addEventListener('click', () => {
+        window.location.href = 'Eng-history.html'; // Redirect to history page
+      });
+    </script>
+
+
+
+   <!-- New Back to Option Page button -->
+   <button id="backToOptionPageButton" class="back-option-button" onclick="window.location.href='option.html'">Back to Option Page</button>
+
+   <!-- Success Modal favorite--> 
+<div id="favsuccessModal" class="modal">
+  <div class="modal-content">
+      <p id="favsuccessMessage"></p>
+      <button id="favcloseSuccessModalButton">Close</button>
+  </div>
+</div>
+
+
+<!-- Success Modal logout -->
+<div id="successModal" class="modal" style="display: none;">
+  <div class="modal-content">
+      <p id="successMessage"></p>
+      <button id="closeSuccessModalButton" class="modal-btn confirm">Close</button>
+  </div>
+</div>
+
+
+
+<!-- Confirmation Modal for Logout -->
+<div id="logoutConfirmationModal" class="modal" style="display: none;">
+  <div class="modal-content">
+      <p>Are you sure you want to log out?</p>
+      <button id="confirmLogoutButton" class="modal-btn confirm">Yes</button>
+      <button id="cancelLogoutButton" class="modal-btn cancel">No</button>
+  </div>
+</div>
+
+
+
+ <script>
+  
+  document.getElementById('logoutButton').addEventListener('click', () => {
+    // Show logout confirmation modal
+    document.getElementById('logoutConfirmationModal').style.display = 'flex';
+});
+
+// Function to log out after confirmation
+document.getElementById('confirmLogoutButton').addEventListener('click', () => {
+    fetch('/logout', {
+        method: 'POST',
+        credentials: 'same-origin'
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('successMessage').textContent = 'You have successfully logged out!';
+            document.getElementById('successModal').style.display = 'flex';
+            // Close the confirmation modal
+            document.getElementById('logoutConfirmationModal').style.display = 'none';
+        } else {
+            showError('Logout failed');
+        }
+    })
+    .catch(error => console.error('Logout error:', error));
+});
+
+// Cancel logout
+document.getElementById('cancelLogoutButton').addEventListener('click', function () {
+    document.getElementById('logoutConfirmationModal').style.display = 'none'; // Hide the modal
+});
+
+    // Close modal and redirect to the login page when button is clicked
+    document.getElementById('closeSuccessModalButton').addEventListener('click', () => {
+        document.getElementById('successModal').style.display = 'none';
+        window.location.href = '/index.html'; // Redirect to login page after closing modal
+    });
+
+    // Fetch the logged-in user's name (add this to the bottom of your existing script)
+    window.onload = function() {
+      fetch('/getUser', { credentials: 'same-origin' })
+      .then(response => response.json())
+      .then(data => {
+        if (data.username) {
+          document.getElementById('username').textContent = `Welcome, ${data.username}`;
+        }
+      })
+      .catch(error => console.error('Error fetching username:', error));
+    };
+    </script>
+  
+
+
+  <script src="English Dictionary.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+</html>

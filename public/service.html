@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - WordVoyage Dictionary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+        h1 {
+            color: #6a82fb;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        p {
+            line-height: 1.6;
+            color: #333;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        .services {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .service-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px 0;
+            padding: 15px;
+            width: 80%;
+            text-align: left;
+            transition: transform 0.3s;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        .service-item:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        .service-item:nth-child(even) {
+            animation-delay: 0.8s;
+        }
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: linear-gradient(45deg, #e0f7fa, #b2ebf2, #80deea);
+            overflow: hidden;
+           
+        }
+  
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    <h1>Our Services</h1>
+    <p>At WordVoyage, we offer a range of services designed to enhance your language learning experience.</p>
+    
+    <div class="services">
+        <div class="service-item">
+            <strong>Dynamic English Dictionary:</strong> Access a comprehensive collection of English words with detailed definitions, meaning, and example.
+        </div>
+        <div class="service-item">
+            <strong>Marathi Dictionary:</strong> Explore a rich database of Marathi words, making it easy to understand and communicate in your native language.
+        </div>
+        <div class="service-item">
+            <strong>Word of the Day:</strong> Discover a new word every day to enrich your vocabulary and improve your language skills.
+        </div>
+        <div class="service-item">
+            <strong>Search History:</strong> Easily revisit your previous searches,Keep track of the words you've explored, complete with timestamps (date, time, and seconds). 
+        </div>
+        <div class="service-item">
+            <strong>Favorite Words List:</strong> Save your favorite words for quick access and remove any words you no longer wish to keep.
+        </div>
+    </div>
+
+    <p>Join us on your journey to becoming a wordsmith with our user-friendly features and tools!</p>
+</body>
+</html>

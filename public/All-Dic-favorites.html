@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Words</title>
+<link rel="stylesheet" href="All-Dic-favorites.css">
+</head>
+<body>
+
+      <!-- Navigation bar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <h3>WORDVOYAGE</h3>
+      <p>English To Marathi</p>
+
+    </div>
+    <div class="nav-bar">
+      <ul>
+          <li><a href="about.html" id="aboutBtn">About us</a></li>
+          <li><a href="service.html" id="serviceBtn">Services</a></li>
+          <li><a href="contact.html" id="contactBtn">Contact Us</a></li>
+ 
+      </ul>
+     </div>
+    <div class="navbar-right">
+      <span id="username" class="username">Welcome, User</span>
+      <button id="logoutButton" class="logout-button">Logout</button>
+    </div>
+  </nav>
+
+
+    <div class="header">
+        <h1>Your Favorite Words ❤️</h1>
+
+   
+    <ul id="favorites-list"></ul>
+
+</div>
+
+    <button id="backButton">Back to Dictionary</button>
+
+
+        <!-- Modal for confirmation -->
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+      <p id="modalMessage"></p>
+      <button id="confirmRemoveButton">Confirm</button>
+      <button id="cancelButton">Cancel</button>
+  </div>
+</div>
+
+  <!-- Logout Confirmation Modal -->
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <p>Are you sure you want to logout?</p>
+      <button id="confirmLogoutButton" class="modal-btn confirm" onclick="logout()">Yes</button>
+      <button id="cancelLogoutButton" class="modal-btn cancel" onclick="closeLogoutModal()">No</button>
+    </div>
+  </div>
+
+    <script>
+
+let wordToRemove = null;
+
+function showConfirmationModal(word) {
+    wordToRemove = word;
+    document.getElementById('modalMessage').textContent = `Are you sure you want to remove "${word}" from your favorites?`;
+    document.getElementById('confirmationModal').style.display = 'flex';
+}
+
+document.getElementById('cancelButton').addEventListener('click', () => {
+    document.getElementById('confirmationModal').style.display = 'none';
+    wordToRemove = null;
+});
+
+document.getElementById('confirmRemoveButton').addEventListener('click', () => {
+    if (wordToRemove) {
+        removeFavoriteWord(wordToRemove);
+        wordToRemove = null;
+    }
+    document.getElementById('confirmationModal').style.display = 'none';
+});
+
+function removeFavoriteWord(word) {
+    let favorites = JSON.parse(localStorage.getItem('favoriteWords')) || [];
+    favorites = favorites.filter(favWord => favWord !== word);
+    localStorage.setItem('favoriteWords', JSON.stringify(favorites));
+    renderFavoriteWords();
+}
+
+function renderFavoriteWords() {
+    let favorites = JSON.parse(localStorage.getItem('favoriteWords')) || [];
+    const favoritesList = document.getElementById('favorites-list');
+    favoritesList.innerHTML = ''; 
+
+    favorites.forEach(word => {
+        let listItem = document.createElement('li');
+        listItem.innerText = word;
+
+        let removeButton = document.createElement('button');
+        removeButton.innerText = 'Remove';
+        removeButton.addEventListener('click', () => {
+            showConfirmationModal(word);
+        });
+
+        listItem.appendChild(removeButton);
+        favoritesList.appendChild(listItem);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', renderFavoriteWords);
+
+    
+
+        // Event listener for the "Back" button to return to the dictionary
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'All-language.html'; // Assuming the main page is named index.html
+        });
+
+
+
+
+    // Generate random letters floating in the background
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    
+    function createFloatingLetters() {
+        for (let i = 0; i < 300; i++) {
+            const letter = document.createElement('span');
+            letter.classList.add('letter');
+            letter.innerText = letters[Math.floor(Math.random() * letters.length)];
+            
+            // Random positioning and animation delay
+            letter.style.left = Math.random() * 100 + 'vw';
+            letter.style.animationDelay = Math.random() * 10 + 's';
+            
+            document.body.appendChild(letter);
+        }
+    }
+
+    // Call the function to create floating letters
+    createFloatingLetters();
+
+
+    </script>
+
+
+<script>
+// Show the modal to confirm logout
+document.getElementById('logoutButton').addEventListener('click', function () {
+    document.getElementById('logoutModal').style.display = 'flex';
+});
+
+
+
+// Logout function
+function logout() {
+    fetch('/logout', {
+        method: 'POST',
+        credentials: 'same-origin'
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = '/index.html'; // Redirect to login page
+        } else {
+            showError('Logout failed');
+        }
+    })
+    .catch(error => console.error('Logout error:', error));
+}
+
+// Event listener for "Yes" button in logout modal
+document.getElementById('confirmLogoutButton').addEventListener('click', () => {
+    logout();
+    closeLogoutModal();
+});
+
+// Event listener for "No" button in logout modal
+document.getElementById('cancelLogoutButton').addEventListener('click', () => {
+    closeLogoutModal();
+});
+
+// Close the logout modal
+function closeLogoutModal() {
+    document.getElementById('logoutModal').style.display = 'none';
+}
+
+
+    // Fetch the logged-in user's name (add this to the bottom of your existing script)
+    window.onload = function() {
+      fetch('/getUser', { credentials: 'same-origin' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.username) {
+            document.getElementById('username').textContent = `Welcome, ${data.username}`;
+          }
+        })
+        .catch(error => console.error('Error fetching username:', error));
+    };
+  </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  
+</body>
+</html>

@@ -3,15 +3,12 @@
 🗓️ Word of the Day: Discover a new word every day to expand your vocabulary.
 ❤️ Favorites: Save your favorite words for easy access later.
 🕒 Search History: Keep track of your previous searches, with the ability to remove entries as needed. history will save with date and time
-🔐 User Authentication: Secure login functionality requiring a username and password.
  English to Marathi Dictionary: Provides translations for words from English to Marathi.
 💡 Word Suggestions: If you enter a misspelled word, the application will suggest corrections to enhance your search experience.
 
 🛠️ Technologies Used
 Node.js
 Express.js
-MongoDB (Mongoose for database interactions)
-EJS for templating
 Frontend technologies (HTML, CSS, JavaScript)
 
 To run this project locally, clone the repository and install the dependencies:

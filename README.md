@@ -1,7 +1,9 @@
 # Project-
 ✨ Features: 
 🗓️ Word of the Day: Discover a new word every day to expand your vocabulary.
+
 ❤️ Favorites: Save your favorite words for easy access later.
+
 🕒 Search History: Keep track of your previous searches, with the ability to remove entries as needed. history will save with date and time
  English to Marathi Dictionary: Provides translations for words from English to Marathi.
 💡 Word Suggestions: If you enter a misspelled word, the application will suggest corrections to enhance your search experience.
@@ -23,5 +25,5 @@ Visit http://localhost:5000 in your browser to start using the dictionary. 🌐
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes. Together, let's make Word Voyage even better! 🎉
 
 Screenshot :
-![wallaper](./images/logo.png)
+![wallaper](public/images/logo.png)
 

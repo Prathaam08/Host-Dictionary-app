@@ -21,3 +21,7 @@ Visit http://localhost:5000 in your browser to start using the dictionary. 🌐
 
 🤝 Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes. Together, let's make Word Voyage even better! 🎉
+
+Screenshot :
+![wallaper](./images/logo.png)
+

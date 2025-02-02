@@ -432,3 +432,53 @@ h1 {
         font-size: 0.7rem;
     }
 }
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        padding: 37px 0px;
+        text-align: center;
+    }
+    .nav-bar ul {
+        flex-direction: row;
+        align-items: center;
+    }
+    .nav-bar li {
+        margin: 5px 0;
+    }
+    .word {
+        font-size: 1rem;
+    }
+    h1 {
+        font-size: 20px;
+        margin: -35px 59px;
+    }
+    .logo img {
+        width: 100%;
+        max-width: 385px;
+       
+    }
+    .main-container {
+        width: 90%;
+        padding: 15px;
+    }
+    .input-box input {
+        font-size: 16px;
+    }
+    .btn {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .word {
+        font-size: 1rem;
+        opacity: 0.6;
+    }
+  }
+

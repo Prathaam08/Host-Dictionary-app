@@ -300,6 +300,7 @@ body {
   display: inline-block;
       font-size: 50px;
       margin: 51px 100px;
+      white-space: nowrap; 
 }
 
 @keyframes textclip {
@@ -411,3 +412,44 @@ body {
 
 
 
+/* Responsive Floating Words */
+@media (max-width: 768px) {
+  .word {
+      font-size: 1rem;
+      opacity: 0.6;
+  }
+}
+
+/* Adjust heading for smaller screens */
+@media (max-width: 480px) {
+  .animate-charcter {
+      font-size: 28px;
+      margin: 55px 41px;
+  }
+}
+
+/* Space */
+.space {
+  margin: 20px 0;
+}
+
+/* Responsive Button */
+@media (max-width: 480px) {
+  .option button {
+      width: 100%;
+      max-width: 200px;
+      height: 89px;
+      margin: 26px 105px;
+  }
+
+  .option button a {
+      font-size: 14px;
+   padding: 50px;
+  }
+}
+
+@media (max-width: 768px){
+  .container{
+   padding: 10px 10px;
+  }
+}
